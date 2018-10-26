@@ -393,7 +393,7 @@ void MqttConnected()
       MqttPublishPowerState(i);
       if (SONOFF_IFAN02 == Settings.module) { break; }  // Only report status of light relay
     }
-    if (Settings.tele_period) { tele_period = Settings.tele_period -9; }  // Enable TelePeriod in 9 seconds
+    if (Settings.tele_period && Settings.tele_period  > 2) { tele_period = Settings.tele_period -9; }  // Enable TelePeriod in 9 seconds
     rules_flag.system_boot = 1;
     XdrvCall(FUNC_MQTT_INIT);
   }
